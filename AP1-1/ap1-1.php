@@ -7,7 +7,9 @@ $value = $_GET["valor"];
 
 $data[$key] = $value;
 
-if($_SERVER["REQUEST_METHOD"] == "GET" and $key and $value){
+
+//Pongo isset para que compruebe que no es NULL
+if($_SERVER["REQUEST_METHOD"] == "GET" and isset($_GET["clave"]) and isset($_GET["valor"])){
 
     print("Se ha recibido $value para la clave $key <br>");
 
