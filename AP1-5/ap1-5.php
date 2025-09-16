@@ -6,8 +6,6 @@ $username = "root";
 $password = "root";
 $database = "AP1";
 
-$pdoConnect = new PDO("mysql:host=$host;dbname=$database", $username, $password);
-
 try{
 
     $pdoConnect = new PDO("mysql:host=$host;dbname=$database", $username, $password);
@@ -21,16 +19,7 @@ try{
     $arraySelect = $stmtSelect->fetchAll(PDO::FETCH_ASSOC);
 
 
-
-
-}catch (PDOException $error){
-
-    print "Error de conexión!:" . $error->getMessage();
-
-}
-
-
-    if(count($arraySelect) > 0 and is_array($arraySelect)){
+    if(count($arraySelect) > 0){
 
         foreach($arraySelect as $value){
 
@@ -39,4 +28,18 @@ try{
 
         }
 
+    }else{
+
+        print "No hay resultados en esta tabla<br>";
+
+
     }
+
+
+}catch (PDOException $error){
+
+    print die("Error!:" . $error->getMessage());
+
+}
+
+
