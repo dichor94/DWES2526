@@ -27,10 +27,12 @@ try{
     //Usamos el while, indicando que mientras sea true saque los valores, el propio while cuando vea que sea FALSE (no hay más valores en la tabla)para
     $sqlSelect = "SELECT id, nombre, estado FROM usuarios";
     $result = $mysqli->query($sqlSelect);
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-    while($row = $result->fetch_assoc()){
+    foreach($rows as  $value){
 
-        print "El usuario " . $row["nombre"] . " posee el id " . $row["id"] . " y su estado es: " . $row["estado"] . "<br><br>";
+        print("ID: " . $value['id'] . " - Nombre: " . $value['nombre'] . " - Estado: " . $value['estado'] . "<br>");
+
 
     }
 
